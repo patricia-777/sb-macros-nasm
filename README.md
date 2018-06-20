@@ -10,9 +10,11 @@ Comandos para compilar e rodar:
   ./switch
 
 # Macro do comando do while
-  Comando para montar o código assembly em um arquivo objeto ELF no formato dowhile.o (Unix)
-  nasm -f elf dowhile.asm
+Comando para montar o código assembly em um arquivo objeto ELF no formato dowhile.o (Unix)
+
+nasm -f elf dowhile.asm
   
-  Comando para compilar o objeto da arquitetura i386 num ambiente i386:x86-64
-  Necessário incluir asm_io.o para utilização das rotinas de output
-  gcc -m32 dowhile.o asm_io.o -o dowhile
+Comando para compilar o objeto da arquitetura i386 num ambiente i386:x86-64
+Necessário incluir asm_io.o para utilização das rotinas de output
+  
+gcc -m32 dowhile.o asm_io.o -o dowhile
