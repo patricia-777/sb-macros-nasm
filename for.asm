@@ -13,25 +13,35 @@
 		mov ebx, %2				; Valor final da variável de iteração
 		mov ecx, %3				; Valor que será somado a cada iteração
 
+		push eax
+		push ebx
+		push ecx
 		cmp eax, ebx			; Compara o valor inicial com o final
 		je %$exitForLoop		; Se forem iguais, sai do for
 
 		%$startForLoop:
 	%endmacro
 
-	%macro endFor 0
-		%$endForLoop:
+	%macro endfor 0
+		pop ecx
+		pop ebx
+		pop eax
 		add eax, ecx			; Antes da comparação o valor é incrementado
 		cmp eax, ebx			; Compara o valor inicial com o final
+		push eax
+		push ebx
+		push ecx
+
 		jne %$startForLoop	; Se não forem iguais, o for continua
 		%$exitForLoop:
+		pop ecx
+		pop ebx
+		pop eax
 		%pop for
 	%endmacro
 
-
 section .data
-	msg: db "Iteração #",0		; Mensagem que será repetida
-	tamanho_msg: equ $-msg		; Tamanho da mensagem
+	msg: db "Cruzeiroooo!",0							; Mensagem que será repetida
 
 section .text
 global main
@@ -40,16 +50,11 @@ main:
 	enter 0,0
 	pusha
 
-	xor edx, edx
-
-	for 3,5,1 	; Inicia com 0, incrementa 1 e termina quando alcancar o valor 5
-	 	mov  eax, msg
+	for 0,8,2 	; Inicia com 0, incrementa de 2 em 2 e termina quando alcancar o valor 8
+		mov eax, msg
 		call print_string
-		inc  edx
-	 	mov  eax, edx
-		call print_int
 		call print_nl
-	endFor
+	endfor
 						
 	popa
 	mov eax,0
