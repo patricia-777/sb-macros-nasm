@@ -18,3 +18,15 @@ Comando para compilar o objeto da arquitetura i386 num ambiente i386:x86-64.
 Necessário incluir asm_io.o para utilização das rotinas de output
   
 gcc -m32 dowhile.o asm_io.o -o dowhile
+
+# Macro do comando for
+Comando para montar o código assembly em um arquivo objeto ELF no formato for.o (Unix)
+
+nasm -f elf for.asm
+  
+Comando para compilar o objeto da arquitetura i386 num ambiente i386:x86-64.
+Necessário incluir asm_io.o para utilização das rotinas de output
+  
+gcc -m32 for.o asm_io.o -o for
+
+./for
